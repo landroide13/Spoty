@@ -8,13 +8,16 @@ export class SpotiService {
 
   arti:any[] = [];
   urlSearch:string = "https://api.spotify.com/v1/search";
+  urlArtist:string = "https://api.spotify.com/v1/artists";
+
+  urlToken:string = "Bearer BQB-cOPusBojQOslWaKMG8dfKIDamVPttdPABS_pRwOI_97cJsNuMzkJoNQRou15DEFaF0DmEwaYpoUftbgjTg";
 
   constructor(private http:Http) { }
 
   getArtists(term:string){
 
     let headers = new Headers();
-    headers.append('authorization','Bearer BQA6cae6d7ZZADedP6wsLH49L2hjau_DmmqUwv9hdKr_QgTqXAJBVOozjc_bDFG8KXae4aHQ16NhlHMVFnMXOw');
+    headers.append('authorization',this.urlToken);
 
     let query = `?q=${term}&type=artist`;
     let url = this.urlSearch + query;
@@ -24,6 +27,34 @@ export class SpotiService {
       console.log(this.arti);
 
 
+    })
+  }
+
+  getArtist(id:string){
+
+    let headers = new Headers();
+    headers.append('authorization',this.urlToken);
+
+    let query = `/${id}`;
+    let url = this.urlArtist + query;
+
+    return this.http.get(url, {headers}).map( res =>{
+      console.log(res.json());
+      return res.json();
+    })
+  }
+
+  getTop(id:string){
+
+    let headers = new Headers();
+    headers.append('authorization',this.urlToken);
+
+    let query = `/${id}/top-tracks?country=US`;
+    let url = this.urlArtist + query;
+
+    return this.http.get(url, {headers}).map( res =>{
+      console.log(res.json().tracks);
+      return res.json().tracks;
     })
   }
 

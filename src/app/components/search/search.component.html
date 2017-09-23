@@ -8,8 +8,8 @@
 
     <div class="col-md-9">
       <div class="row">
-        <div class="col-md-3 text-center" *ngFor="let arti of _spotiService.arti">
-          <img [src]="arti.images | noimg" class="img-fluid img-thumbnail">
+        <div class="col-md-3 text-center puntero"  *ngFor="let arti of _spotiService.arti">
+          <img [routerLink]="['/artist',arti.id]" [src]="arti.images | noimg" class="img-fluid img-thumbnail">
           <p>
             {{arti.name}}
           </p>
