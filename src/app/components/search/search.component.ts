@@ -7,10 +7,17 @@ import {SpotiService} from '../../services/spoti.service';
 })
 export class SearchComponent implements OnInit {
 
+  term:string = "";
+
   constructor(private _spotiService:SpotiService) { }
 
   ngOnInit() {
-    this._spotiService.getArtist("metallica");
+
+  }
+
+  searchArtist(){
+    console.log(this.term);
+    this._spotiService.getArtists( this.term ).subscribe();
   }
 
 }

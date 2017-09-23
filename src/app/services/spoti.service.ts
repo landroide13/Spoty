@@ -6,27 +6,25 @@ import 'rxjs/add/operator/map';
 export class SpotiService {
 
 
-  artist:any[] = [];
+  arti:any[] = [];
   urlSearch:string = "https://api.spotify.com/v1/search";
 
   constructor(private http:Http) { }
 
-  getArtist(term:string){
+  getArtists(term:string){
 
     let headers = new Headers();
-    headers.append('authorization','Bearer BQD_2kIOkc3hY8eY1YMdkvoHQHOG1Hj8NRdpaGNpDzXDES8OZhJTmi2QX84hRfzvrEwyEl97BOmMOOLDckUK2Q')
+    headers.append('authorization','Bearer BQA6cae6d7ZZADedP6wsLH49L2hjau_DmmqUwv9hdKr_QgTqXAJBVOozjc_bDFG8KXae4aHQ16NhlHMVFnMXOw');
 
-    let query = `q=${term}&type=artist`;
+    let query = `?q=${term}&type=artist`;
     let url = this.urlSearch + query;
 
     return this.http.get(url, {headers}).map( res =>{
-      console.log(res);
-      this.artist = res.json().artist.items;
+      this.arti = res.json().artists.items;
+      console.log(this.arti);
+
 
     })
   }
 
 }
-
-
-//BQD_2kIOkc3hY8eY1YMdkvoHQHOG1Hj8NRdpaGNpDzXDES8OZhJTmi2QX84hRfzvrEwyEl97BOmMOOLDckUK2Q
