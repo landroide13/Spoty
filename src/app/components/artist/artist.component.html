@@ -36,9 +36,10 @@
               <td><img [src]="track.album?.images | noimg" class="img-fluid img-50"></td>
               <td>{{ track.name }}</td>
               <td>{{ track.popularity}}%</td>
-              <td><audio controls>
+               <td><audio controls>
                 <source [src]="track.preview_url">
               </audio></td>
+              <!-- <td><iframe src="https://open.spotify.com/embed?uri=spotify%3Atrack%3A33Q6ldVXuJyQmqs8BmAa0k" width="300" height="80" frameborder="0" allowtransparency="true"></iframe></td> -->
             </tr>
           </tbody>
         </table>
