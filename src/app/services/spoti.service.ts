@@ -10,7 +10,7 @@ export class SpotiService {
   urlSearch:string = "https://api.spotify.com/v1/search";
   urlArtist:string = "https://api.spotify.com/v1/artists";
 
-  urlToken:string = "Bearer BQB-cOPusBojQOslWaKMG8dfKIDamVPttdPABS_pRwOI_97cJsNuMzkJoNQRou15DEFaF0DmEwaYpoUftbgjTg";
+  urlToken:string = "Bearer BQD4g7QYsbCA8i5rc1_xM9XQwJqzmRu2rWkj5mL_qPEeDlJAh_Pk9LYVyCANkMnm6T-6WAX8bT5YiYmvfDFsAA";
 
   constructor(private http:Http) { }
 

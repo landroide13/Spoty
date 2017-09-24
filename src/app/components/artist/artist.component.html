@@ -1,4 +1,53 @@
 
-<pre>
-{{artist | json }}
-</pre>
+<div *ngIf="artist" class="container main-container animated fadeIn fast">
+  <div class="row">
+    <div class="col-md-3">
+      <img [src]="artist.images | noimg" class="img-circle img-thumbnail top-30">
+    </div>
+
+    <div class="col-md-9">
+      <h3>{{artist.name}}<br><small>Popularity {{artist.popularity}}</small></h3>
+      <hr>
+      <a [href]="artist.external_urls?.spotify" class="btn btn-outline-primary">Go Web page</a>
+      <a [routerLink]="['/search']" class="btn btn-outline-danger">back</a>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="tracks" class="top-30 container">
+  <h3>Top ones {{artist.name}}</h3>
+  <hr>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="table-responsive">
+        <table class="table table-inverse table-hover">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Photo</th>
+              <th>Song</th>
+              <th>Popularity</th>
+              <th>Preview</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let track of tracks; let i = index">
+              <td>{{i+1}}</td>
+              <td><img [src]="track.album?.images | noimg" class="img-fluid img-50"></td>
+              <td>{{ track.name }}</td>
+              <td>{{ track.popularity}}%</td>
+              <td><audio controls>
+                <source [src]="track.preview_url">
+              </audio></td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+</div>
